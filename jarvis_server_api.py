@@ -4,6 +4,10 @@ app = Flask(__name__)
 
 props = dict(line.strip().split('=') for line in open('properties.txt'))
 
+ip_host=props["ip_host"]
+port_flask=int(props["port_flask"])
+jarvis_home=props["jarvis_home"]
+
 
 @app.route("/jarvissay", methods=['POST'])
 def jarvis_say():
@@ -15,5 +19,4 @@ def jarvis_say():
     return "OK"
 
 if __name__ == "__main__":
-    app.run(host=props("ip_host"),port=props("port_flask"))
-
+    app.run(host=ip_host,port=port_flask)
